@@ -6,7 +6,7 @@
 /*   By: aymaatou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:13:19 by aymaatou          #+#    #+#             */
-/*   Updated: 2019/11/12 20:18:16 by aymaatou         ###   ########.fr       */
+/*   Updated: 2019/11/13 11:28:15 by aymaatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ char	*ft_strchr(const char *str, int c)
 	int i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (*str != '\0')
 	{
-		if (str[i] == c)
-			return ((char *)&str[0]);
-		i++;
+		if (*str == c)
+			return ((char *)str);
+		str++;
 	}
 	if (c == '\0')
-		return ((char*)&str[0]);
-	return ((char*)str);
+		return ((char*)str);
+	return (NULL);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
