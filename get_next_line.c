@@ -6,7 +6,7 @@
 /*   By: aymaatou <aymaatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 20:39:05 by aymaatou          #+#    #+#             */
-/*   Updated: 2019/11/16 18:55:02 by aymaatou         ###   ########.fr       */
+/*   Updated: 2019/11/16 21:34:36 by aymaatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -56,10 +56,13 @@ int get_next_line(int fd, char **line)
 	int			r_value;
 	int			i;
 	char		*r_buffer;
+	char		*temp;
 	static char *box;
 
 	i = 1;
-	*line = ft_strdup("");
+/*	if (!(*line = ft_strdup("")))
+		return (-1);*/
+	*line = NULL;
 	if (BUFFER_SIZE < 0 || BUFFER_SIZE == 0)
 		return(-1);	
 	while (1)
@@ -69,21 +72,22 @@ int get_next_line(int fd, char **line)
 			if (!check(box))
 			{
 				*line = ft_strjoin(*line, box);
-				if ((&box[ft_strchr(box, '\n') + 1]))
-					box = ft_strdup(&box[ft_strchr(box, '\n') + 1]); 	
-				else
-					free(box);
+				temp = ft_strdup(&box[ft_strchr(box, '\n') + 1]); 	
+				free(box);
+				box = temp;
 				return (1);
 			}
 			else
 			{	
-				*line = ft_strjoin(*line, box);
+				*line = ft_strdup(box);
+				free(box);
 				box = NULL;
-				//free(box);
 			}
 		}
 		while (i) 
-		{	r_buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+		{
+			if (!(r_buffer = malloc(BUFFER_SIZE + 1 * sizeof(char))))
+				return(-1);
 			if ((r_value = read(fd, r_buffer, BUFFER_SIZE)) < 0)
 				return (-1);
 			r_buffer[r_value] = '\0';
@@ -91,15 +95,18 @@ int get_next_line(int fd, char **line)
 			*line = ft_strjoin(*line, r_buffer);
 			if (r_value == 0)
 			{
+				free(r_buffer);
 				free(box);
 				box = NULL;
+
 				return (0);
 				
 			}
-			if (i == 0 && (&r_buffer[ft_strchr(r_buffer, '\n') + 1]))
+			if (i == 0)
 				box = ft_strdup(&r_buffer[ft_strchr(r_buffer, '\n') + 1]);
-		}
+		
 		free(r_buffer);	
+		}	
 		return (1);
 	}
 

@@ -3,22 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aymaatou <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/16 17:46:33 by aymaatou          #+#    #+#             */
-/*   Updated: 2019/11/16 18:54:00 by aymaatou         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
 /*   By: aymaatou <aymaatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:13:19 by aymaatou          #+#    #+#             */
-/*   Updated: 2019/11/16 17:30:03 by aymaatou         ###   ########.fr       */
+/*   Updated: 2019/11/16 20:56:20 by aymaatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +99,8 @@ char	*ft_strdup(char *s1)
 	int		i;
 
 	i = 0;
+	if (!s1)
+		return (NULL);
 	if (!(r_value = (char *)malloc(ft_strlen(s1) * sizeof(char) + 1)))
 		return (NULL);
 	while (s1[i])
@@ -118,6 +108,6 @@ char	*ft_strdup(char *s1)
 		r_value[i] = s1[i];
 		i++;
 	}
-	r_value[i] = 0;
+	r_value[i] = '\0';
 	return (r_value);
 }
