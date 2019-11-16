@@ -6,22 +6,13 @@
 /*   By: aymaatou <aymaatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 20:39:05 by aymaatou          #+#    #+#             */
-/*   Updated: 2019/11/16 14:53:03 by aymaatou         ###   ########.fr       */
+/*   Updated: 2019/11/16 18:55:02 by aymaatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
 
 #if defined BUFFER_SIZE
 
-int s_strlen(char *r_buffer)
-{
-	int size;
-
-	size = 0;
-	while (r_buffer[size] != '\n' && r_buffer[size] != '\0')
-		size++;
-	return(size);
-}
 int	check(char *r_buffer)
 {
 	int i;
@@ -87,7 +78,8 @@ int get_next_line(int fd, char **line)
 			else
 			{	
 				*line = ft_strjoin(*line, box);
-				free(box);
+				box = NULL;
+				//free(box);
 			}
 		}
 		while (i) 
@@ -113,7 +105,7 @@ int get_next_line(int fd, char **line)
 
 }
 
-
+/*
 int    main(void)
 {
 
@@ -130,5 +122,5 @@ int    main(void)
 	return (0);
 	
 }
-
+*/
 #endif

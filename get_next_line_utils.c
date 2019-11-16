@@ -3,15 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+/*   By: aymaatou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/16 17:46:33 by aymaatou          #+#    #+#             */
+/*   Updated: 2019/11/16 18:54:00 by aymaatou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: aymaatou <aymaatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:13:19 by aymaatou          #+#    #+#             */
-/*   Updated: 2019/11/16 14:43:22 by aymaatou         ###   ########.fr       */
+/*   Updated: 2019/11/16 17:30:03 by aymaatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+int s_strlen(char *r_buffer)
+{
+	int size;
+
+	size = 0;
+	while (r_buffer[size] != '\n' && r_buffer[size] != '\0')
+		size++;
+	return(size);
+}
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
@@ -50,11 +71,27 @@ size_t	ft_strlen(const char *str)
 	size_t i;
 
 	i = 0;
+	if (str[i] == '\0')
+		return (i);
 	while (str[i] != '\0')
 		i++;
 	return (i);
 }
+/*
+char	*ft_strchr(const char *str, int c)
+{
+	int i;
 
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			return ((char*)&str[i + 1]);
+		i++;
+	}
+	return (NULL);
+}
+*/
 int	ft_strchr(const char *str, int c)
 {
 	int i;
@@ -68,7 +105,6 @@ int	ft_strchr(const char *str, int c)
 	}
 	return (i);
 }
-
 char	*ft_strdup(char *s1)
 {
 	char	*r_value;
@@ -82,8 +118,6 @@ char	*ft_strdup(char *s1)
 		r_value[i] = s1[i];
 		i++;
 	}
-	if (ft_strlen(s1) > 0)
-		free(s1);
 	r_value[i] = 0;
 	return (r_value);
 }
