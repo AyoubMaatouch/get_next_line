@@ -6,7 +6,7 @@
 /*   By: aymaatou <aymaatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:13:19 by aymaatou          #+#    #+#             */
-/*   Updated: 2019/11/15 19:03:08 by aymaatou         ###   ########.fr       */
+/*   Updated: 2019/11/16 14:43:22 by aymaatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,13 @@ char	*ft_strdup(char *s1)
 	i = 0;
 	if (!(r_value = (char *)malloc(ft_strlen(s1) * sizeof(char) + 1)))
 		return (NULL);
-	while (ft_strlen(s1))
+	while (s1[i])
 	{
-		r_value[i] = *s1++;
+		r_value[i] = s1[i];
 		i++;
 	}
+	if (ft_strlen(s1) > 0)
+		free(s1);
 	r_value[i] = 0;
 	return (r_value);
 }
