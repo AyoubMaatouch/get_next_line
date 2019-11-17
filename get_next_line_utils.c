@@ -6,13 +6,13 @@
 /*   By: aymaatou <aymaatou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:13:19 by aymaatou          #+#    #+#             */
-/*   Updated: 2019/11/16 20:56:20 by aymaatou         ###   ########.fr       */
+/*   Updated: 2019/11/17 14:17:30 by aymaatou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int s_strlen(char *r_buffer)
+int		s_strlen(char *r_buffer)
 {
 	int size;
 
@@ -21,6 +21,7 @@ int s_strlen(char *r_buffer)
 		size++;
 	return(size);
 }
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
@@ -59,28 +60,12 @@ size_t	ft_strlen(const char *str)
 	size_t i;
 
 	i = 0;
-	if (str[i] == '\0')
-		return (i);
 	while (str[i] != '\0')
 		i++;
 	return (i);
 }
-/*
-char	*ft_strchr(const char *str, int c)
-{
-	int i;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			return ((char*)&str[i + 1]);
-		i++;
-	}
-	return (NULL);
-}
-*/
-int	ft_strchr(const char *str, int c)
+int		ft_strchr(const char *str, int c)
 {
 	int i;
 
